@@ -10,7 +10,9 @@
          }
          stage('Test') {
              steps {
-                  bat '.\\mvnw test'
+                   dir('DXC') {
+                    bat '.\\mvnw test'
+                }
              }
 
              post {
