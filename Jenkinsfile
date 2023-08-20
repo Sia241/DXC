@@ -9,10 +9,8 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                  dir('DXC') {
+           steps {
                     bat '.\\mvnw test'
-                }
             }
 
             post {
