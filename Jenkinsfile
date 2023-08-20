@@ -10,11 +10,8 @@
          }
          stage('Test') {
              steps {
-               dir('DXC') {
                     bat '.\\mvnw test'
-                }
-                
-             }
+            }
 
              post {
                  always {
