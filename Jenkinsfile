@@ -2,38 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Build and Test') {
+        stage('Build') {
             steps {
-                script {
-                    if (env.BRANCH_NAME == 'dev') {
-                        // Run tests, SonarQube analysis, etc., for the 'dev' branch
-                    } else if (env.BRANCH_NAME == 'test') {
-                        // Run tests, SonarQube analysis, etc., for the 'test' branch
-                    } else if (env.BRANCH_NAME == 'prod') {
-                        // Run tests, SonarQube analysis, etc., for the 'prod' branch
-                    }
-                }
+                git 'https://github.com/vdespa-collab/java-rest-api-calculator.git'
+                bat '.\\mvnw clean compile'
             }
         }
-
-        stage('Docker Build') {
-            when {
-                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
-            }
+        stage('Test') {
             steps {
-                script {
-                    docker.build("my-app:${env.BRANCH_NAME}")
+                 bat '.\\mvnw test'
+            }
+
+            post {
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
                 }
-            }
-        }
-
-        stage('Deploy to Kubernetes') {
-            when {
-                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
-            }
-            steps {
-                // Use kubectl or Kubernetes CLI to deploy the Docker image to the specific namespace/environment
-                sh "kubectl apply -f kubernetes/${env.BRANCH_NAME}-deployment.yaml"
             }
         }
     }
