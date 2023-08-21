@@ -33,11 +33,17 @@ pipeline {
                        }
           }
      }
-          stage("Quality gate") {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
+          stage("Quality Gate") {
+              steps {
+                  script {
+                      def qualityGate = waitForQualityGate()
+                      if (qualityGate.status != 'OK') {
+                          error "Quality Gate failed: ${qualityGate.status}"
+                      }
+                  }
+              }
+          }
+
 
            stage('Build and Push Docker Image') {
                      steps {
