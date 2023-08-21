@@ -1,6 +1,11 @@
 pipeline {
      agent any
 
+      environment {
+             DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
+             DOCKER_IMAGE_TAG = "assiya24/DXC-Internship-TEST:latest"
+         }
+
      stages {
          stage('Build') {
              steps {
@@ -33,6 +38,18 @@ pipeline {
                 waitForQualityGate abortPipeline: true
             }
         }
+
+           stage('Build and Push Docker Image') {
+                     steps {
+                         script {
+                             docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                                 // Build and push the Docker image to Docker Hub
+                                 def customImage = docker.build(DOCKER_IMAGE_TAG, "-f Dockerfile .")
+                                 customImage.push()
+                             }
+                         }
+                     }
+                 }
 
 }
 }
