@@ -24,7 +24,7 @@
                      agent any
                      steps {
                        withSonarQubeEnv('SonarScanner') {
-                        bat "mvn clean package sonar:sonar"
+                        bat "mvn clean package sonar:sonar -Dsonar.projectName='DXC-Stage"
                        }
           }
      }
