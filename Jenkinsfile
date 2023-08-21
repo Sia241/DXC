@@ -50,7 +50,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('', DOCKER_HUB_CREDENTIALS) {
                         // Build and push the Docker image to Docker Hub
                         def customImage = docker.build(DOCKER_IMAGE_TAG, "-f Dockerfile .")
                         customImage.push()
