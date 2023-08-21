@@ -29,20 +29,5 @@ pipeline {
           }
      }
 
-      stage("Send Email") {
-                 steps {
-                     script {
-                         def junitAttachments = '**/target/surefire-reports/TEST-*.xml'
-                         def sonarAttachments = '**/target/sonar/*.html'
-
-                         emailext(
-                             subject: "Build Results for DXC-Internship",
-                             body: "The JUnits build and SonarQube analysis have completed.",
-                             to: 'assiyasiwar@gmail.com',
-                             attachmentsPattern: junitAttachments + ' ' + sonarAttachments
-                         )
-                     }
-                 }
- }
 }
 }
