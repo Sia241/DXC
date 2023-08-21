@@ -24,11 +24,7 @@
                      agent any
                      steps {
                        withSonarQubeEnv('SonarScanner') {
-                        bat "mvn clean package sonar:sonar \
-                           -Dsonar.projectKey=DXC-Stage \
-                           -Dsonar.projectName='DXC-Stage' \
-                           -Dsonar.host.url=http://localhost:9000 \
-                           -Dsonar.token=sqp_09ed54f3b88a1e77835283b8686b4f328c41c19b"
+                        bat "mvn clean package sonar:sonar"
                        }
           }
      }

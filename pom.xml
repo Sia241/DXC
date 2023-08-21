@@ -15,6 +15,13 @@
 	<description>Stage PFA jenkins</description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+			<!-- Other properties -->
+			<sonar.host.url>http://localhost:9000</sonar.host.url>
+			<sonar.projectKey>DXC-Stage</sonar.projectKey>
+			<sonar.login>sqp_09ed54f3b88a1e77835283b8686b4f328c41c19b</sonar.login>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -41,20 +48,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.9.1.2184</version>
+			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>sonar</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<!-- Optional URL to server. Default value is http://localhost:9000 -->
-				<sonar.host.url>
-					http://localhost:9000
-				</sonar.host.url>
-			</properties>
-		</profile>
-	</profiles>
+
 </project>
