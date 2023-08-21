@@ -1,5 +1,3 @@
-
-
  pipeline {
      agent any
 
@@ -21,14 +19,5 @@
                  }
              }
          }
-
-          stage("build & SonarQube analysis") {
-                     agent any
-                     steps {
-                       withSonarQubeEnv('SonarScanner') {
-                        bat "mvn clean package sonar:sonar -Dsonar.projectName='DXC-Stage"
-                       }
-          }
      }
  }
-}
