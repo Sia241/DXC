@@ -20,7 +20,7 @@
 		<!-- Other properties -->
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
 		<sonar.projectKey>DXC-Stage</sonar.projectKey>
-		<sonar.token>sqp_09ed54f3b88a1e77835283b8686b4f328c41c19b</sonar.token>
+		<sonar.token>sqp_e7e2304d774ea9fcd680fe51eb52328c4ec19b51</sonar.token>
 
 	</properties>
 	<dependencies>
