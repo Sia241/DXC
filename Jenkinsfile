@@ -47,17 +47,7 @@ pipeline {
             }
         }
 
-        stage('Build and Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
-                        // Build and push the Docker image to Docker Hub
-                        def customImage = docker.build(DOCKER_IMAGE_TAG, "-f Dockerfile .")
-                        customImage.push()
-                    }
-                }
-            }
-        }
+
 
         stage('Send Email Notification') {
             steps {
