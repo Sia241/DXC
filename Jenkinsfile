@@ -58,6 +58,9 @@ pipeline {
                     bat 'xcopy /s C:\\Users\\hp\\Desktop\\DXC\\stage .'
                     // Build the Docker image
                     bat 'docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
+                    //Taging
+                    bat 'docker tag myapp_dxc_prod:latest  assiya24/myapp_dxc_prod:latest'
+
 
                     // Push the Docker image to a Docker registry (replace with your registry and image name)
                     bat 'docker push assiya24/myapp_dxc_prod:latest'
