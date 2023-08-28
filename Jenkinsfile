@@ -48,9 +48,10 @@ pipeline {
        stage("Build & Push Docker Image") {
                   steps {
                       script {
+                          echo "Workspace: ${workspace}"
 
                           // Build the Docker image
-                          bat 'docker build -t myapp_dxc_prod .'
+                          bat 'docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage .'
 
                           // Push the Docker image to a Docker registry (replace with your registry and image name)
                           bat 'docker push assiya24/myapp_dxc_prod:latest'
