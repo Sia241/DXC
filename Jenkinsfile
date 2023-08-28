@@ -49,7 +49,7 @@ pipeline {
 
 
 
-        stage('Send Email Notification') {
+       /* stage('Send Email Notification') {
             steps {
                 script {
                     def junitResults = currentBuild.rawBuild.getTestResultAction()
@@ -65,7 +65,7 @@ pipeline {
                     mimeType: 'text/html'
                 }
             }
-        }
+        }*/
 
     }
 }
