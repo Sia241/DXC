@@ -48,6 +48,9 @@ pipeline {
        stage("Build & Push Docker Image") {
                   steps {
                       script {
+                          // Clean up the workspace
+                          cleanWs()
+
                           // Build the Docker image
                           bat 'docker build -t myapp_dxc_prod .'
 
