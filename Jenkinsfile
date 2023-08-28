@@ -50,7 +50,7 @@ pipeline {
                       script {
 
                           // Build the Docker image
-                          bat 'docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage .'
+                          bat 'docker build -t myapp_dxc_prod .'
 
                           // Push the Docker image to a Docker registry (replace with your registry and image name)
                           bat 'docker push assiya24/myapp_dxc_prod:latest'
