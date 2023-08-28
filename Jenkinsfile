@@ -45,19 +45,20 @@ pipeline {
                   }*/
 
 
-      stage("Build & Push Docker Image") {
-          steps {
-              script {
-                  echo "Workspace: ${workspace}"
+     stage("Build & Push Docker Image") {
+         steps {
+             script {
+                 echo "Workspace: ${workspace}"
 
-                  // Build the Docker image with the correct path to the Dockerfile
-                  bat 'set DOCKER_BUILDKIT=0 && docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
+                 // Disable Docker Buildkit and build the Docker image
+                 bat 'SET DOCKER_BUILDKIT=0 && docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
 
-                  // Push the Docker image to a Docker registry
-                  bat 'docker push assiya24/myapp_dxc_prod:latest'
-              }
-          }
-      }
+                 // Push the Docker image to a Docker registry (replace with your registry and image name)
+                 bat 'docker push assiya24/myapp_dxc_prod:latest'
+             }
+         }
+     }
+
 
 
 
