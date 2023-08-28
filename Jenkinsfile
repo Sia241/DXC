@@ -45,19 +45,23 @@ pipeline {
                   }*/
 
 
-     stage("Build & Push Docker Image") {
-         steps {
-             script {
-                 echo "Workspace: ${workspace}"
+    stage("Build & Push Docker Image") {
+        steps {
+            script {
+                echo "Workspace: ${workspace}"
 
-                 // Disable Docker Buildkit and build the Docker image
-                 bat 'SET DOCKER_BUILDKIT=0 && docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
+                // Set the DOCKER_BUILDKIT environment variable to "0"
+                withEnv(["DOCKER_BUILDKIT=0"]) {
+                    // Build the Docker image
+                    bat 'docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
 
-                 // Push the Docker image to a Docker registry (replace with your registry and image name)
-                 bat 'docker push assiya24/myapp_dxc_prod:latest'
-             }
-         }
-     }
+                    // Push the Docker image to a Docker registry (replace with your registry and image name)
+                    bat 'docker push assiya24/myapp_dxc_prod:latest'
+                }
+            }
+        }
+    }
+
 
 
 
