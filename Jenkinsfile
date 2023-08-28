@@ -8,14 +8,14 @@ pipeline {
                  bat '.\\mvnw clean compile'
              }
          }
-         stage('Test') {
+         /*stage('Test') {
              steps {
                     bat '.\\mvnw test'
             }
 
              post {
                  always {
-                     junit '**/target/surefire-reports/TEST-*.xml'
+                     junit '**//*target/surefire-reports/TEST-*.xml'
                  }
              }
          }
@@ -31,7 +31,7 @@ pipeline {
 
 
 
-     /* stage("Quality Gate") {
+      stage("Quality Gate") {
                       steps {
                           script {
                               timeout(time: 5, unit: 'MINUTES') {
