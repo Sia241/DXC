@@ -49,10 +49,10 @@ pipeline {
                   steps {
                       script {
                           // Build the Docker image
-                          bat 'docker build -t my-app-DXC-PROD .'
+                          bat 'docker build -t myapp_dxc_prod .'
 
                           // Push the Docker image to a Docker registry (replace with your registry and image name)
-                          bat 'docker push assiya24/my-app-DXC-PROD:latest'
+                          bat 'docker push assiya24/myapp_dxc_prod:latest'
                       }
                   }
               }
