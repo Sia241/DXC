@@ -67,7 +67,7 @@ pipeline {
                     // Log in to the Docker registry using Docker credentials (replace 'docker-credential-id')
                     // This step assumes you have configured Docker credentials in Jenkins
                     // Make sure to replace 'docker-credential-id' with the actual credential ID
-                    bat 'docker login -u assiya24 -p assiya102964'
+                    bat 'docker login -u assiya24 -p dckr_pat_wsh0Gwat4UVKmd9Bh5sr7mDXwPk'
 
                     // Push the Docker image to a Docker registry (replace with your registry and image name)
                     bat 'docker push assiya24/myapp_dxc_prod:latest'
