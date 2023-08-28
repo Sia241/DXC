@@ -51,9 +51,9 @@ pipeline {
                   echo "Workspace: ${workspace}"
 
                   // Build the Docker image with the correct path to the Dockerfile
-                  bat 'docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
+                  bat 'set DOCKER_BUILDKIT=0 && docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
 
-                  // Push the Docker image to a Docker registry (replace with your registry and image name)
+                  // Push the Docker image to a Docker registry
                   bat 'docker push assiya24/myapp_dxc_prod:latest'
               }
           }
