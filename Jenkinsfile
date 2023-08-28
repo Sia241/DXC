@@ -30,6 +30,7 @@ pipeline {
      }
 
 
+
       stage("Quality Gate") {
                       steps {
                           script {
@@ -42,6 +43,19 @@ pipeline {
                           }
                       }
                   }
+
+
+       stage("Build & Push Docker Image") {
+                  steps {
+                      script {
+                          // Build the Docker image
+                          bat 'docker build -t my-app-DXC-PROD .'
+
+                          // Push the Docker image to a Docker registry (replace with your registry and image name)
+                          bat 'docker push assiya24/my-app-DXC-PROD:latest'
+                      }
+                  }
+              }
 
 
 }
