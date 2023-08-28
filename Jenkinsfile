@@ -52,6 +52,8 @@ pipeline {
 
                 // Set the DOCKER_BUILDKIT environment variable to "0"
                 withEnv(["DOCKER_BUILDKIT=0"]) {
+                    // Copy project files into the Jenkins workspace
+                    bat 'xcopy /s C:\\Users\\hp\\Desktop\\DXC\\stage\\target .'
                     // Build the Docker image
                     bat 'docker build -t myapp_dxc_prod -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
 
