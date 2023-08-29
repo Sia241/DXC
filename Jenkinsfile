@@ -84,14 +84,6 @@ pipeline {
       stage("Deploy to Kubernetes") {
           steps {
               script {
-                  // Define the Kubernetes context if needed
-                  def kubeContext = 'deploy-prod'  // Replace with your Kubernetes context name
-
-                  // Set the Kubernetes context if defined
-                  if (kubeContext) {
-                      bat "kubectl config use-context ${kubeContext}"
-                  }
-
                   // Apply your Kubernetes Deployment YAML file
                   bat "kubectl apply -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile\\deployment.yaml"
               }
