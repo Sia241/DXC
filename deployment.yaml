@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp-container
+          image: myapp-image  # This will be dynamically set based on the ConfigMap
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYAPP_IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: branch-image-names  # Replace with your ConfigMap name
+                  key: prod-image  # Replace with the appropriate key for the branch

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: branch-image-names
+data:
+  dev-image: myapp-dxc-dev:latest
+  prod-image: myapp-dxc-prod:latest
+  test-image: myapp-dxc-test:latest
