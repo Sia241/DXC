@@ -81,14 +81,14 @@ pipeline {
 
 
 
-      stage("Deploy to Kubernetes") {
+    /*  stage("Deploy to Kubernetes") {
           steps {
               script {
                   // Apply your Kubernetes Deployment YAML file
                   bat "kubectl apply -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile\\deployment.yaml"
               }
           }
-      }
+      }*/
 
 
 
