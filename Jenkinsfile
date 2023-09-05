@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
-        DOCKER_IMAGE_TAG = "assiya24/DXC-Internship-TEST:latest"
-    }
 
     stages {
         stage('Build') {
