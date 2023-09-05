@@ -42,5 +42,41 @@ pipeline {
                  }
              }
 
+
+              stage("Build & Push Docker Image") {
+                     steps {
+                         script {
+                             echo "Workspace: ${workspace}"
+
+                             // Set the DOCKER_BUILDKIT environment variable to "0" to disable Docker Buildkit
+                             withEnv(["DOCKER_BUILDKIT=0"]) {
+                                 // Delete the entire workspace to ensure a clean environment
+                                 deleteDir()
+
+                                 // Copy project files into the Jenkins workspace
+                                 bat 'xcopy /s C:\\Users\\hp\\Desktop\\DXC\\stage .'
+
+                                 // Build the Docker image using the Dockerfile in the 'stage' directory
+                                 bat 'docker build -t myapp_dxc_dev -f C:\\Users\\hp\\Desktop\\DXC\\stage\\Dockerfile .'
+
+                                 // Tag the Docker image
+                                 bat 'docker tag myapp_dxc_dev:latest assiya24/myapp_dxc_dev:latest'
+
+                                 // Log in to the Docker registry using Docker credentials (replace 'docker-credential-id')
+                                 // This step assumes you have configured Docker credentials in Jenkins
+                                 // Make sure to replace 'docker-credential-id' with the actual credential ID
+                                 bat 'docker login -u assiya24 -p dckr_pat_wsh0Gwat4UVKmd9Bh5sr7mDXwPk'
+
+                                 // Push the Docker image to a Docker registry (replace with your registry and image name)
+                                 bat 'docker push assiya24/myapp_dxc_dev:latest'
+
+                                 // Log out from Docker registry
+                                 bat 'docker logout'
+                             }
+                         }
+                     }
+                 }
+
+
 }
 }
