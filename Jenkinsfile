@@ -20,7 +20,7 @@ pipeline {
              }
          }
 
-        /*  stage("build & SonarQube analysis") {
+          stage("build & SonarQube analysis") {
                      agent any
                      steps {
                        withSonarQubeEnv('SonarScanner') {
@@ -42,7 +42,7 @@ pipeline {
                               }
                           }
                       }
-                  }*/
+                  }
 
 
     stage("Build & Push Docker Image") {
